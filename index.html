@@ -8,12 +8,11 @@
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
 		<link rel="stylesheet" href="style.css">
 	</head>
-	<body
-		>
+	<body>
 		<section class="section">
 			<div class="box">
 				<div class="level">
-					<h1 class="title level-left"> Kana-trainer </h1>
+					<input id="button-run" class="button is-primary level-left" type="submit" value="Run!">
 					<div class="tabs is-toggle level-right">
 						<ul>
 							<li>
@@ -30,42 +29,31 @@
 					</div>
 				</div>
 				
-				<div class="columns">
-					<div class="column">
-						<div class="control">
-							<textarea id="base" class="textarea" placeholder="Copy text here!"></textarea>
-						</div>
-					</div>
-					<div class="column">
-						<div class="control">
-							<textarea id="result" class="textarea" type="text" readonly>Please copy text to the field on the left, select kana syllables from the table below and then click "Run!"</textarea>
-						</div>
-						<br>
-						<input id="button-run" class="button is-primary" type="submit" value="Run!">
-					</div>
+				<div class="control">
+					<textarea id="text" class="textarea" type="text">Please paste text here, select language and kana syllables from the table below and then click "Run!"</textarea>
 				</div>
 			</div>
-		</section>
-		<section class="section">
-			<div class="box">
-				<div class="tabs is-toggle is-toggle-rounded is-fullwidth">
-					<ul>
-						<li>
-							<a id="hiragana">
-								<span>Hiragana</span>
-							</a>
-						</li>
-						<li>
-							<a id="katakana">
-								<span>Katakana</span>
-							</a>
-						</li>
-					</ul>
-				</div>
-				<div id="current-table" class=""></div>
-			</div>
-		</section>
-		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-		<script src="script.js"></script>
-	</body>
+		</div>
+	</div>
+	<div class="box">
+		<div class="tabs is-toggle is-toggle-rounded is-fullwidth">
+			<ul>
+				<li>
+					<a id="hiragana">
+						<span>Hiragana</span>
+					</a>
+				</li>
+				<li>
+					<a id="katakana">
+						<span>Katakana</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<div id="current-table" class=""></div>
+	</div>
+</section>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="script.js"></script>
+</body>
 </html>

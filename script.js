@@ -28,14 +28,14 @@ $("#button-run").click( function() {
 	console.log("Replace this: " + base);
 	console.log("With this: " + target);
 
-	var text = $("#base").val();
+	var text = $("#text").val();
 	var resultText = text;
 	for (var i = base.length - 1; i >= 0; i--) {
 		var reg = new RegExp(base[i], "gi");
 		resultText = resultText.replace(reg, target[i]);
 	}
 
-	$("#result").text(resultText);
+	$("#text").text(resultText);
 });
 
 $("#hiragana").click( function() {
