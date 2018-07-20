@@ -9,30 +9,43 @@
 		<link rel="stylesheet" href="style.css">
 	</head>
 	<body
-	>
+		>
 		<section class="section">
 			<div class="box">
-				<h1 class="title"> Kana-trainer </h1>
-				<h2 class="subtitle"> Work-in-progress </h2>
+				<div class="level">
+					<h1 class="title level-left"> Kana-trainer </h1>
+					<div class="tabs is-toggle level-right">
+						<ul>
+							<li>
+								<a id="english" class="is-active">
+									<span>English</span>
+								</a>
+							</li>
+							<li>
+								<a id="russian">
+									<span>Русский</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
 				
 				<div class="columns">
 					<div class="column">
 						<div class="control">
-							<textarea class="textarea" placeholder="Copy text here!"></textarea>
+							<textarea id="base" class="textarea" placeholder="Copy text here!"></textarea>
 						</div>
 					</div>
 					<div class="column">
 						<div class="control">
-							<textarea class="textarea" type="text" readonly>Please copy text to the field on the left and click "Run!"</textarea>
+							<textarea id="result" class="textarea" type="text" readonly>Please copy text to the field on the left, select kana syllables from the table below and then click "Run!"</textarea>
 						</div>
 						<br>
-						<input class="button is-primary" type="submit" value="Run!">
+						<input id="button-run" class="button is-primary" type="submit" value="Run!">
 					</div>
 				</div>
-				
 			</div>
 		</section>
-
 		<section class="section">
 			<div class="box">
 				<div class="tabs is-toggle is-toggle-rounded is-fullwidth">
@@ -49,12 +62,9 @@
 						</li>
 					</ul>
 				</div>
-
 				<div id="current-table" class=""></div>
-
 			</div>
 		</section>
-		
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 		<script src="script.js"></script>
 	</body>

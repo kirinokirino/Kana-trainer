@@ -1,18 +1,121 @@
-function createButtons() {
-	$("table td a").addClass("button is-rounded");
-	$("table td a").click(function(){
-		$(this).toggleClass("is-selected has-background-primary");
-		console.log("Toggled " +$(this).prop("title") + " button");
-	});
-}
+$("#button-run").click( function() {
+	var target = [];
+	var base = [];
+	$("table td a.is-selected").each( function() {
+		if ( $("#hiragana").parent().hasClass("is-active") ) {
+			target.push($(this).prop("title"));
 
-$("#hiragana").click(function(){
+			for (var i = translation.length - 1; i >= 0; i--) {
+				if (translation[i].hiragana == $(this).prop("title")) {
+					if ($("#english").parent().hasClass("is-active")) base.push(translation[i].english);
+					else base.push(translation[i].russian);
+				}
+			}
+		}
+
+		else if ( $("#katakana").parent().hasClass("is-active") ) {
+			target.push($(this).prop("title"));
+
+			for (var i = translation.length - 1; i >= 0; i--) {
+				if (translation[i].katakana == $(this).prop("title")) {
+					if ($("#english").parent().hasClass("is-active")) base.push(translation[i].english);
+					else base.push(translation[i].russian);
+				}
+			}
+		}
+	});
+
+	console.log("Replace this: " + base);
+	console.log("With this: " + target);
+
+	var text = $("#base").val();
+	var resultText = text;
+	for (var i = base.length - 1; i >= 0; i--) {
+		var reg = new RegExp(base[i], "gi");
+		resultText = resultText.replace(reg, target[i]);
+	}
+
+	$("#result").text(resultText);
+});
+
+$("#hiragana").click( function() {
 	selectHiraganaTable();
 });
 
-$("#katakana").click(function() {
+$("#katakana").click( function() {
 	selectKatakanaTable();
 });
+
+$("#english").click( function() {
+	$("#english").parent().addClass("is-active");
+	$("#russian").parent().removeClass("is-active");
+});
+
+$("#russian").click( function() {
+	$("#russian").parent().addClass("is-active");
+	$("#english").parent().removeClass("is-active");
+});
+
+function createButtons() {
+	$("table td a").addClass("button is-rounded");
+	$("table td a").click(function(){
+		$(this).toggleClass("is-selected has-background-info");
+		console.log("Toggled " +$(this).prop("title") + " button");
+	});
+}
+var translation = [
+    { hiragana: 'あ', katakana: 'ア', english: 'a ', russian: 'а ' },
+    { hiragana: 'か', katakana: 'カ', english: 'ka', russian: 'ка' },
+    { hiragana: 'さ', katakana: 'サ', english: 'sa', russian: 'са' },
+    { hiragana: 'た', katakana: 'タ', english: 'ta', russian: 'та' },
+    { hiragana: 'な', katakana: 'ナ', english: 'na', russian: 'на' },
+    { hiragana: 'は', katakana: 'ハ', english: 'ha', russian: 'ха' },
+    { hiragana: 'ま', katakana: 'マ', english: 'ma', russian: 'ма' },
+    { hiragana: 'や', katakana: 'ヤ', english: 'ya', russian: 'я' },
+    { hiragana: 'ら', katakana: 'ラ', english: 'ra', russian: 'ра' },
+    { hiragana: 'わ', katakana: 'ワ', english: 'wa', russian: 'ва' },
+
+    { hiragana: 'い', katakana: 'イ', english: 'i ', russian: 'и ' },
+    { hiragana: 'き', katakana: 'キ', english: 'ki', russian: 'ки' },
+    { hiragana: 'し', katakana: 'シ', english: 'si', russian: 'си' },
+    { hiragana: 'ち', katakana: 'チ', english: 'ti', russian: 'ти' },
+    { hiragana: 'に', katakana: 'ニ', english: 'ni', russian: 'ни' },
+    { hiragana: 'ひ', katakana: 'ヒ', english: 'hi', russian: 'хи' },
+    { hiragana: 'み', katakana: 'ミ', english: 'mi', russian: 'ми' },
+    { hiragana: 'り', katakana: 'リ', english: 'ri', russian: 'ри' },
+    { hiragana: 'ゐ', katakana: 'ヰ', english: 'wi', russian: 'ви' },
+
+    { hiragana: 'う', katakana: 'ウ', english: 'u ', russian: 'у ' },
+    { hiragana: 'く', katakana: 'ク', english: 'ku', russian: 'ку' },
+    { hiragana: 'す', katakana: 'ス', english: 'su', russian: 'су' },
+    { hiragana: 'つ', katakana: 'ツ', english: 'tu', russian: 'ту' },
+    { hiragana: 'ぬ', katakana: 'ヌ', english: 'nu', russian: 'ну' },
+    { hiragana: 'ふ', katakana: 'フ', english: 'hu', russian: 'ху' },
+    { hiragana: 'む', katakana: 'ム', english: 'mu', russian: 'му' },
+    { hiragana: 'ゆ', katakana: 'ユ', english: 'yu', russian: 'ю' },
+    { hiragana: 'る', katakana: 'ル', english: 'ru', russian: 'ру' },
+
+    { hiragana: 'え', katakana: 'エ', english: 'e ', russian: 'е ' },
+    { hiragana: 'け', katakana: 'ケ', english: 'ke', russian: 'ке' },
+    { hiragana: 'せ', katakana: 'セ', english: 'se', russian: 'се' },
+    { hiragana: 'て', katakana: 'テ', english: 'te', russian: 'те' },
+    { hiragana: 'ね', katakana: 'ネ', english: 'ne', russian: 'не' },
+    { hiragana: 'へ', katakana: 'ヘ', english: 'he', russian: 'хе' },
+    { hiragana: 'め', katakana: 'メ', english: 'me', russian: 'ме' },
+    { hiragana: 'れ', katakana: 'レ', english: 're', russian: 'ре' },
+    { hiragana: 'ゑ', katakana: 'ヱ', english: 'we', russian: 'ве' },
+
+    { hiragana: 'お', katakana: 'オ', english: 'o ', russian: 'о ' },
+    { hiragana: 'こ', katakana: 'コ', english: 'ko', russian: 'ко' },
+    { hiragana: 'そ', katakana: 'ソ', english: 'so', russian: 'со' },
+    { hiragana: 'と', katakana: 'ト', english: 'to', russian: 'то' },
+    { hiragana: 'の', katakana: 'ノ', english: 'no', russian: 'но' },
+    { hiragana: 'ほ', katakana: 'ホ', english: 'ho', russian: 'хо' },
+    { hiragana: 'も', katakana: 'モ', english: 'mo', russian: 'мо' },
+    { hiragana: 'よ', katakana: 'ヨ', english: 'yo', russian: 'ё' },
+    { hiragana: 'ろ', katakana: 'ロ', english: 'ro', russian: 'ро' },
+    { hiragana: 'を', katakana: 'ヲ', english: 'wo', russian: 'во' },
+];
 
 function selectHiraganaTable() {
 	$("#hiragana").parent().addClass("is-active");

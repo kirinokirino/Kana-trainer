@@ -22,3 +22,9 @@ body::after {
 	position: absolute;
 	z-index: -1;
 }
+
+.table th {
+	text-align: center;
+	font-size: 1.3rem;
+	font-weight: normal;
+}
