@@ -35,7 +35,7 @@ $("#button-run").click( function() {
 		resultText = resultText.replace(reg, target[i]);
 	}
 
-	$("#text").text(resultText);
+	$("#text").val(resultText);
 });
 
 $("#hiragana").click( function() {
