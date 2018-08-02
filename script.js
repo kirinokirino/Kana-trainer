@@ -62,6 +62,20 @@ function createButtons() {
 		$(this).toggleClass("is-selected has-background-info");
 		console.log("Toggled " +$(this).prop("title") + " button");
 	});
+	
+	$("table tr:not(:first) th").wrapInner("<a class=\"button\"></a>");
+	$("table tr:not(:first) th").click(function(){
+		$(this).siblings().children().addClass("is-selected has-background-info");
+	});
+	
+	for (var i = 2; i <= 11; i++){
+		$("table tr:first th:nth-child("+i+")").wrapInner("<a data-column="+i+" class=\"button\"></a>");
+		$("table tr:first th a").click(function(){
+			column = $(this).attr("data-column");
+			$("table td:nth-child("+(column)+") a").addClass("is-selected has-background-info");
+		});
+	}	
+	
 }
 var translation = [
     { hiragana: 'あ', katakana: 'ア', english: 'a ', russian: 'а ' },
