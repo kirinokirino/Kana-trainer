@@ -1,3 +1,3 @@
 # Kana-trainer
-Simple webapp which changes syllables in text to kana alphabet. It should help to recognise them. 
+Simple app which replaces certain syllables in text with a given katakana/hiragana. 
 https://kirinokirino.github.io/Kana-trainer/
